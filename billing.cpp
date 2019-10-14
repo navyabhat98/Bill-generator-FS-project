@@ -1,3 +1,5 @@
+//required header files
+//This project using indexing technique
 #include<iostream>
 #include<fstream>
 #include<string.h>
@@ -7,10 +9,11 @@
 
 using namespace std;
 
-
+//fucntion will check if the particular month is already existing 
 int check_if_month_exist(string);
 
 
+//items of class to holh itesm and its prices and also the quantity
 class items
 {
 	
@@ -42,6 +45,7 @@ class items
 
 };
 
+//member function to store item name and the price
 void items::read_data_storeitems()
 {
 	cout<<"Itemname:";
@@ -51,12 +55,14 @@ void items::read_data_storeitems()
 	
 }
 
+//creating a buffer that later will be stored in a file
 void items::pack_storeitems()
 {
 	buffer.erase();
 	buffer+=itemnames+"|"+sprice+"$"+"\n";
 }
 
+//write the buffer values to file
 void items::write_to_file()
 {
 	fstream file;
@@ -66,7 +72,7 @@ void items::write_to_file()
 }
 
 
-
+//packing functions
 void items::pack_for_file(string month)
 {
 	string filebuffer;
@@ -88,7 +94,7 @@ void items::pack_for_file(string month)
 	
 }
 
-
+//unpacking
 void items::unpack_storeitems()
 {
 	int ch=1,i=0;
@@ -103,6 +109,7 @@ void items::unpack_storeitems()
 }
 
 
+//updating the monthly bill
 void items::update_monthly_bill(string month)
 {
 	ifstream file;
@@ -127,7 +134,7 @@ void items::update_monthly_bill(string month)
 	
 }
 
-
+//unpacking the bill so that it could be printed
 void items::unpack_bill()
 {
 		int ch=0,i=0;
@@ -151,6 +158,8 @@ void items::unpack_bill()
 		total += price;
 
 }
+
+//display particular months bill
 void items::display_monthly_bills(string month)
 {
 	
@@ -177,7 +186,7 @@ void items::display_monthly_bills(string month)
 	
 }
 
-
+//indexing
 void items::add_file_toindex(string month)
 {
 	fstream file3;
